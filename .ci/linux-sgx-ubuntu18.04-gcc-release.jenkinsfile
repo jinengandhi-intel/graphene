@@ -1,18 +1,13 @@
 node('sgx_slave_2.6') {
-    checkout scm
 
-    env.WORKSPACE = env.WORKSPACE + "/" + env.BUILD_ID.toString()
-    println "# WORKSPACE: " + env.WORKSPACE
-
-    
     dir("${env.WORKSPACE}") {
     
         sh "pwd"
-        
+        checkout scm
         // sh "sed -i 's/leeroy/intel/g' .ci/ubuntu18.04.dockerfile"
         // sh "sed -i 's/1001/1000/g' .ci/ubuntu18.04.dockerfile"
-        sh "sed -i '2392i [sigsuspend01]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
-        sh "sed -i '1167i [mmap03]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
+        sh "sed -i '2346i [sigsuspend01]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
+        sh "sed -i '1160i [mmap03]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
         sh "sed -i '/clean-check\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
         sh "sed -i '/gitignore-test\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
         sh "sed -i '4i cd ../../../../../ && make SGX=1' .ci/lib/stage-build-sgx.jenkinsfile"

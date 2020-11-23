@@ -4,8 +4,8 @@ node('nonsgx_slave') {
 
         sh "pwd"
         checkout scm
-	sh "sed -i '2392i [sigsuspend01]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
-        sh "sed -i '1167i [mmap03]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
+	sh "sed -i '2346i [sigsuspend01]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
+        sh "sed -i '1160i [mmap03]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
         sh "sed -i '/clean-check\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
         sh "sed -i '/gitignore-test\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
 
