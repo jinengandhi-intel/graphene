@@ -8,12 +8,13 @@ node('sgx_slave_2.6') {
         // sh "sed -i 's/1001/1000/g' .ci/ubuntu18.04.dockerfile"
         sh "sed -i '2346i [sigsuspend01]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
         sh "sed -i '1160i [mmap03]\\nskip=yes' LibOS/shim/test/ltp/ltp.cfg"
-        sh "sed -i '/clean-check\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
-        sh "sed -i '/gitignore-test\$/d' .ci/lib/stage-test-all-nosgx.jenkinsfile"
+        sh "sed -i '/clean-check\$/d' .ci/lib/stage-test-apps-sgx.jenkinsfile"
+        sh "sed -i '/gitignore-test\$/d' .ci/lib/stage-test-apps-sgx.jenkinsfile"
         sh "sed -i '4i cd ../../../../../ && make SGX=1' .ci/lib/stage-build-sgx.jenkinsfile"
         sh "sed -i '27,29d' Pal/src/host/Linux-SGX/sgx-driver/link-intel-driver.py"
         sh "sed -i '5,34d' .ci/lib/stage-build-sgx.jenkinsfile"
         sh "sed -i 's/isgx/sgx/g' .ci/lib/config.jenkinsfile"
+        sh "sed -i '112,150d' .ci/lib/stage-test-apps-sgx.jenkinsfile
         load '.ci/lib/config.jenkinsfile'
         load '.ci/lib/config-ubuntu18.04.jenkinsfile'
         load '.ci/lib/config-release.jenkinsfile'
