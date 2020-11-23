@@ -19,6 +19,7 @@ Graphene Library OS with Intel SGX Support
 What is Graphene?
 =================
 
+Comment from Jinen.
 Graphene is a |nbsp| lightweight guest OS, designed to run a |nbsp| single
 application with minimal host requirements. Graphene can run applications in an
 isolated environment with benefits comparable to running a |nbsp| complete OS in
